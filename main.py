@@ -1,5 +1,6 @@
 import time
 import random
+import codecs
 from os import system, name
 
 from os import fdopen
@@ -12,7 +13,7 @@ def clear():
         _ = system('clear')
 
 
-f = open('kanjilist.txt', 'r')
+f = codecs.open('kanjilist.txt', 'r', 'UTF-8')
 content = f.read()
 f.close()
 
