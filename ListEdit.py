@@ -42,6 +42,7 @@ if __name__ == '__main__':
         sleep(2)
 
 
+    #Ciclo inserimento dei dai
     stop = False
 
     while(not stop):
@@ -69,8 +70,29 @@ if __name__ == '__main__':
                 sleep(2)
 
         else:
-            stop = True 
-            
+            stop = True
+
+    #opzione di visualizzare la lista di kanji
+    clear()
+    if(input('Vuoi mostrare l\'elenco completo dei kanji?: (s,n)\n') == 's'):
+        i = 0
+        clear()
+        for k in kanji_list:
+            print(i, '\t\t', k.kanji, '\t\t', k.ita, '\t\t', k.sound)
+            i += 1
+
+        
+        if(input('Vuoi eliminare una riga dell\'elenco?: (s,n):\n') == 's'):
+            index_str = input('Quale riga vuoi eliminare?\n')
+            try:
+                index_num = int(index_str)
+                if((index_num <=0) or (index_num < len(kanji_list))):
+                    kanji_list.pop(index_num)
+                    print('Kanji eliminato correttamente')
+                else:
+                    print('WARNING: il numero selezionato non è presente nella lista')
+            except:
+                print('WARNING: Inserire il numero di riga')
     #scrittura dei dati sul file json
     f = open('data.json', 'w')
     json.dump([k.__dict__ for k in kanji_list], f, indent=4)
